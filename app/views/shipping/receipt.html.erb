@@ -1,0 +1,76 @@
+<%= wicked_pdf_stylesheet_link_tag "shipping" %>
+<div class="document">
+<% if defined?(params[:label_url]) %>
+<img src="<%= params[:label_url] %>" class="rotateimg90 displayed" height="550">
+<% else %>
+<img src="https://help.cratejoy.com/hc/en-us/article_attachments/202329499/0aXmpW.png" class="rotateimg90 displayed" height="550">
+<% end %>
+<hr class="hr-dotted"/>
+<p class="p-tiny" align="center"><i>Cut on dotted line.</i></p>
+<table border="0" class="sfont" width="100%">
+<tr>
+<td class="border1" vertical-align="top" width="60%">
+<img class="topleft" src="https://www.boxnearby.com/images/company.png" width="100">
+<h3 class="h-center">Receipt</h3>
+<h5><%= params[:vendor]%> Tracking #: <%= params[:track_no]%></h5>
+Print Date: <%= Time.now.strftime('%Y/%m/%d %H:%M:%S') %><br>
+Parcel details: 
+
+<table class="sfont">
+<tr>
+<td>&nbsp;</td>
+<td vertical-align="top">  
+Weight: <%= params[:pkg_weight] %></br>
+Dimensions:  <%= params[:pkg_dimension] %></br>
+Order #: <%= params[:order_no] %></br>
+Account Name: <%= params[:account_name] %>
+</td>
+
+<td vertical-align="top"> 
+
+<table class="sfont">
+<tr>
+<td><%= params[:pkg_what] %>: </td><td><%= params[:pkg_price] %> </td>
+</tr>
+<tr>
+<td>Insurance Fee: </td><td><%= params[:pkg_insurance] %> </td>
+</tr>
+<tr>
+<td><b>Total:</b> </td><td><b><%= params[:pkg_total] %> </b></td>
+</tr>
+</table>
+</td>
+</tr></table>
+
+<p><b>Payment Method: <%= params[:payment_method] %></b></p>
+
+<b>From:</b> <%= params[:from_line1] %> <br>
+ <%= params[:from_line2] %> <br>
+ <%= params[:from_line3] %> <br>
+ <%= params[:from_line4] %> <br>
+<b>To: </b><%= params[:to_line1] %> <br>
+ <%= params[:to_line2] %> <br>
+ <%= params[:to_line3] %> <br>
+ <%= params[:to_line4] %> <br>
+
+</td>
+
+<td class="border1">
+
+Instructions:
+
+<ol>
+<li>Use labels once. DO NOT PHOTO COPY OR ALTER LABELS.</li>
+<li>Attach the label to the package. A self-adhesive label is recommended. If using tape, DO NOT TAPE OVER THE BARCODE. Ensure all edges are secure and that the label does not wrap around the package.</li>
+<li>Drop off the package to the carrier's office.</li>
+</ol>
+
+<p class="p-tiny">
+*Refunds for unused postage paid labels can be requested online 30 days from the print date.
+</p>
+<p class="p-tiny">Thank you for using Boaxnearby!
+</p>
+</td>
+</tr>
+</table>
+</div>
